@@ -6,7 +6,7 @@ RoomMe Database & Web Application
  - Field: Relational Database & Web Development
  - Name: RoomMe
 
-Team Member
+Team Members
 --------------
 * Xiaoli Jiang <jiangxiaoli1104@gmail.com>
 * Xiumei Lu <sammiexiu@gmail.com>
@@ -21,3 +21,4 @@ Languages & Technologies
 * HTML
 * CSS
 * XAMPP/MAMP
+* jQuery
