@@ -72,7 +72,7 @@
 			$query .= "AND A.Pets = '$pets'";
 		}		
 	}
-	echo "Query:  $query";
+	//echo "Query:  $query";
 	//execute query
 	$result = mysqli_query($con, $query);
 	mysqli_close($con);
@@ -116,6 +116,26 @@
 		</ul>
 	</nav>
 	<br>
+	<section> 
+		<p><b> Your Searching Setting:</b><br>
+		<?php 
+				//echo $query;
+				echo "Room Type: $room_type<br>
+					  Bathroom Type: $bathroom_type<br>
+					  Max Capacity: $capacity <br>
+					  Price:  min: $min_price  max:$max_price <br>
+					  Start Date Since: $start_date<br>
+					  State: $state<br>
+					  Zip Code: $zip_code<br>
+	   				  Distance to School: $distance<br> 
+					  Parking: $parking <br>
+					  Laundry: $laundry<br>
+					  Smoking: $smoking<br>
+					  Pets: $pets<br>
+				";
+			?>
+		</p>
+	</section>
 	<br>
 	<p><h2 id="pagetype">Searching Result</h2></p>
 	<table class="resultlist sortable">

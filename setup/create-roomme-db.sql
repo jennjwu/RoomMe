@@ -1,3 +1,6 @@
+CREATE DATABASE roomme;
+USE roomme;
+
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -104,22 +107,6 @@ INSERT INTO `Primary_Tenant` (`Tenant_ID`, `Rents_Housing`) VALUES
 (2005, 5005),
 (2006, 5006);
 
-CREATE TABLE IF NOT EXISTS `Rating` (
-  `Rating_ID` int(11) NOT NULL,
-  `Housing_ID` int(11) NOT NULL,
-  `Tenant_ID` int(11) DEFAULT NULL COMMENT 'Nullable for anonymous ratings.',
-  `Date` date NOT NULL,
-  `Rating` int(1) NOT NULL,
-  `Comments` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Rating_ID`),
-  KEY `Rated_on_House_idx` (`Housing_ID`),
-  KEY `Rater_idx` (`Tenant_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `Rating` (`Rating_ID`, `Housing_ID`, `Tenant_ID`, `Date`, `Rating`, `Comments`) VALUES
-(1, 5001, 2001, '2014-03-02', 4, 'luxurious!'),
-(2, 5002, 2002, '2013-05-05', 3, NULL);
-
 CREATE TABLE IF NOT EXISTS `Rooms` (
   `Rooms_ID` int(11) NOT NULL,
   `Price` int(6) NOT NULL,
@@ -156,7 +143,8 @@ CREATE TABLE IF NOT EXISTS `Secondary_Tenant` (
 INSERT INTO `Secondary_Tenant` (`Tenant_ID`, `Renting_Room`) VALUES
 (2007, 50011),
 (2008, 50051),
-(2009, 50052);
+(2009, 50052),
+(2010, 50012);
 
 CREATE TABLE IF NOT EXISTS `Tenant` (
   `Tenant_ID` int(11) NOT NULL,
@@ -216,10 +204,6 @@ ALTER TABLE `Housing`
 ALTER TABLE `Primary_Tenant`
   ADD CONSTRAINT `Renting_Housing` FOREIGN KEY (`Rents_Housing`) REFERENCES `Housing` (`Housing_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Tenant_type2` FOREIGN KEY (`Tenant_ID`) REFERENCES `Tenant` (`Tenant_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `Rating`
-  ADD CONSTRAINT `Rated_on_House` FOREIGN KEY (`Housing_ID`) REFERENCES `Housing` (`Housing_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Rater` FOREIGN KEY (`Tenant_ID`) REFERENCES `Tenant` (`Tenant_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `Secondary_Tenant`
   ADD CONSTRAINT `Renting_Room` FOREIGN KEY (`Renting_Room`) REFERENCES `Rooms` (`Rooms_ID`) ON DELETE CASCADE ON UPDATE CASCADE,

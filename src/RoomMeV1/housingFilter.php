@@ -176,8 +176,8 @@
 			$counter++;
 		}
 	}
-	echo "Counter is $counter";
-	echo "Query:  $query";
+	//echo "Counter is $counter";
+	//echo "<section> Query:  $query </section>";
 			
 	$result = mysqli_query($con, $query);
 	mysqli_close($con);
@@ -221,8 +221,30 @@
 		</ul>
 	</nav>
 	<br>
+	<section> 
+		<p> <b>Your Searching Setting: </b><br>
+		<?php 
+				//echo $query;
+				echo "City: $city<br>";
+				echo "State: $state<br>
+					  Zip Code: $zip_code<br>
+	   				  Distance to School: $distance<br>
+	   				  Start Date Since: $start_date<br>
+					  Price:  min: $min_price  max:$max_price <br>
+					  Bedrooms: min: $min_no_of_bedrooms  max: $max_no_of_bedrooms<br>
+					  Bathrooms: min: $min_no_of_bathrooms max: $max_no_of_bathrooms<br>
+					  Max Capacity: $max_capacity <br>
+					  Parking: $parking <br>
+					  Laundry: $laundry<br>
+					  Smoking: $smoking<br>
+					  Pets: $pets<br>
+				";
+			?>
+		</p>
+	</section>
 	<br>
 	<p><h2 id="pagetype">Searching Result</h2></p>
+	
 	<table class="resultlist sortable">
 	  <thead>
 		<th>ID</th>

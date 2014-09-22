@@ -80,7 +80,7 @@
 	}
 		
 	//execute query		
-	echo "Query:  $query";		
+	//echo Query:  $query";		
 	$result = mysqli_query($con, $query);
 	mysqli_close($con);
 ?>
@@ -123,6 +123,20 @@
 		</ul>
 	</nav>
 	<br>
+	<section> 
+		<p><b> Your Advanced Searching Setting:</b><br>
+		<?php 
+				//echo $query;
+				echo "School: $school<br>
+					  Major: $major<br>
+					  Age:  min: $min_age  max:$max_age <br>
+					  Home Country: $home_country <br>
+					  Smoking: $smoking<br>
+					  Pets: $pets<br>
+				";
+			?>
+		</p>
+	</section>
 	<br>
 	<p><h2 id="pagetype">Searching Result</h2></p>
 	<table class="resultlist sortable" >
